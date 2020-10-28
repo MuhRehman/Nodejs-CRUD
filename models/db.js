@@ -6,3 +6,4 @@ mongoose.connect('mongodb+srv://rehman:rehman123@cluster0.s9oi5.mongodb.net/test
 });
 
 require('./employee.model');
+require('./userModel');

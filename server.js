@@ -8,6 +8,10 @@ const port = process.env.PORT || 8000;
 
 const employeeController = require('./controllers/employeeController');
 
+const mongoose = require('mongoose');
+const User = mongoose.model('user');
+
+
 var app = express();
 app.use(bodyparser.urlencoded({
     extended: true
@@ -22,3 +26,31 @@ app.listen(port, () => {
 });
 
 app.use('/employee', employeeController);
+
+app.post("/test", (req, res, next) => {
+
+
+    
+    User.create({
+        name: req.body.name,
+email: req.body.email,
+mobile: req.body.mobile,
+city: req.body.city
+    }).then(data=>{
+
+        res.status(200).send(data);
+    })
+
+   });
+
+
+   app.get("/test", (req, res, next) => {
+
+
+    
+    User.find().then(data=>{
+
+        res.status(200).send(data);
+    })
+
+   });
